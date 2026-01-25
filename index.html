@@ -18,7 +18,8 @@
             --tg-blue: #229ED9;
             --wa-green: #25D366;
             --fb-blue: #1877F2;
-            --ig-pink: #E4405F;
+            --x-black: #ffffff;
+            --vk-blue: #0077FF;
             --glass: rgba(255, 255, 255, 0.03);
         }
 
@@ -72,6 +73,30 @@
             transform: translateY(-5px);
         }
 
+        /* Icon Animations */
+        @keyframes icon-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        @keyframes icon-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        @keyframes icon-spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes icon-shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+        }
+
+        .tech-card:hover .animate-float { animation: icon-float 2s ease-in-out infinite; }
+        .tech-card:hover .animate-pulse-slow { animation: icon-pulse 2s ease-in-out infinite; }
+        .tech-card:hover .animate-spin-slow { animation: icon-spin-slow 4s linear infinite; }
+        .tech-card:hover .animate-shake { animation: icon-shake 0.5s ease-in-out infinite; }
+
         .glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
         .avatar-glow { box-shadow: 0 0 40px rgba(59, 130, 246, 0.25); }
         
@@ -106,42 +131,6 @@
             100% { transform: scale(1.5); opacity: 0; }
         }
 
-        .yt-pulse {
-            position: absolute;
-            border: 2px solid var(--yt-red);
-            border-radius: 50%;
-            opacity: 0;
-            animation: yt-pulse 1.5s ease-out infinite;
-        }
-        @keyframes yt-pulse {
-            0% { transform: scale(0.8); opacity: 0.5; }
-            100% { transform: scale(1.8); opacity: 0; }
-        }
-
-        .tg-pulse {
-            position: absolute;
-            border: 2px solid var(--tg-blue);
-            border-radius: 50%;
-            opacity: 0;
-            animation: tg-pulse 1.5s ease-out infinite;
-        }
-        @keyframes tg-pulse {
-            0% { transform: scale(0.8); opacity: 0.5; }
-            100% { transform: scale(1.8); opacity: 0; }
-        }
-
-        .web-pulse {
-            position: absolute;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            opacity: 0;
-            animation: web-pulse 1.5s ease-out infinite;
-        }
-        @keyframes web-pulse {
-            0% { transform: scale(0.8); opacity: 0.4; }
-            100% { transform: scale(1.8); opacity: 0; }
-        }
-
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -157,6 +146,78 @@
             width: 100%;
             height: 100%;
             border: 0;
+        }
+
+        /* Stylish YouTube Animated Logo Styles */
+        .yt-stylish-logo {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            padding-left: 36px;
+        }
+
+        .yt-visual {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .yt-backdrop {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff0000;
+            border-radius: 8px;
+            opacity: 0.2;
+            transition: all 0.4s ease;
+        }
+
+        .yt-icon-inner {
+            z-index: 1;
+            width: 20px;
+            height: 14px;
+            background: #ff0000;
+            border-radius: 3px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .yt-icon-inner::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 3px 0 3px 5px;
+            border-color: transparent transparent transparent white;
+            margin-left: 1px;
+        }
+
+        .yt-btn:hover .yt-backdrop {
+            transform: scale(1.2);
+            opacity: 0.4;
+            filter: blur(4px);
+        }
+
+        .yt-btn:hover .yt-icon-inner {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+        }
+
+        .yt-text {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #fff;
+            transition: color 0.3s ease;
         }
 
         @media (max-width: 640px) {
@@ -178,20 +239,20 @@
         <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest">
             <a href="#videos" class="hover:text-blue-400 transition">Tutorials</a>
             <a href="#services" class="hover:text-blue-400 transition">Services</a>
-            <a href="#aosp" class="hover:text-blue-400 transition">AOSP Dev</a>
+            <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
             <a href="https://t.me/Info_Shakib" target="_blank" class="text-blue-500">Telegram Channel</a>
         </div>
     </nav>
 
-    <header class="relative min-h-screen flex flex-col justify-center items-center pt-32 px-6 text-center overflow-hidden">
+    <!-- Header section -->
+    <header class="relative min-h-[60vh] flex flex-col justify-center items-center pt-24 pb-8 px-6 text-center overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-10" style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 40px 40px;"></div>
         
-        <div class="relative z-10 max-w-4xl flex flex-col items-center mb-16">
+        <div class="relative z-10 max-w-4xl flex flex-col items-center mb-0">
             <div class="mb-10 stagger-up flex flex-col items-center">
                 <div class="relative mb-6">
                     <div class="absolute inset-0 bg-blue-600 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-                    <div class="w-36 h-36 md:w-44 md:h-44 rounded-full border-2 border-blue-500/40 p-1.5 avatar-glow relative z-10 bg-[#050505]">
-                        <!-- Profile Image Updated to Raw GitHub Link -->
+                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-blue-500/40 p-1.5 avatar-glow relative z-10 bg-[#050505]">
                         <img src="https://raw.githubusercontent.com/Shakib-BD/portfolio/main/images/profile-image.jpg" 
                              alt="Shakib" 
                              class="w-full h-full object-cover rounded-full transition-all duration-700 hover:scale-110"
@@ -206,11 +267,11 @@
                 </div>
             </div>
 
-            <div class="inline-block px-4 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-8 stagger-up">
+            <div class="inline-block px-4 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-6 stagger-up">
                 Professional Firmware Specialist
             </div>
             
-            <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-8 leading-none stagger-up uppercase">
+            <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-none stagger-up uppercase">
                 Fix Your Device <br/> 
                 <span class="text-blue-500 flex items-center justify-center gap-4">
                     Anywhere 
@@ -225,234 +286,217 @@
                 </span>
             </h1>
             
-            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light stagger-up leading-relaxed">
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light stagger-up leading-relaxed">
                 Expert Android recovery, brick fixing, and custom ROM builds. 
                 Providing high-level technical support to clients worldwide.
             </p>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-4 w-full md:w-auto stagger-up">
-                <a href="https://t.me/Shakib_BD" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl flex items-center justify-center gap-3 transition shadow-lg shadow-blue-600/20">
-                    <i data-lucide="send" class="w-5 h-5"></i> Telegram Support
-                </a>
-                <a href="https://t.me/Info_Shakib" class="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl flex items-center justify-center gap-3 border border-white/10 transition">
-                    <i data-lucide="megaphone" class="text-blue-400 w-5 h-5"></i> Telegram Main Channel
-                </a>
-                <a href="https://youtube.com/@droid-healthcare" class="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl flex items-center justify-center gap-3 border border-white/10 transition">
-                    <i data-lucide="youtube" class="text-red-500 w-5 h-5"></i> YouTube
-                </a>
-            </div>
         </div>
     </header>
 
-    <section id="videos" class="py-24 section-padding max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 px-4">
-            <div>
-                <h2 class="text-xs font-bold text-red-500 uppercase tracking-[0.4em] mb-4">Latest Work</h2>
-                <h3 class="text-3xl md:text-5xl font-bold tracking-tight uppercase">Youtube Video of my works.</h3>
-            </div>
-            <a href="https://youtube.com/@droid-healthcare" target="_blank" class="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest hover:text-red-500 transition">
-                VIEW ALL ON YOUTUBE <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    <!-- Latest Work section -->
+    <section id="videos" class="pt-8 pb-6 section-padding max-w-6xl mx-auto">
+        <div class="flex flex-col items-center mb-10 px-4 text-center">
+            <h2 class="text-xs font-bold text-blue-400 uppercase tracking-[0.4em] mb-4">Portfolio Highlights</h2>
+            <h3 class="text-3xl md:text-5xl font-bold tracking-tight uppercase mb-8">Video Demonstrations.</h3>
+            
+            <!-- Stylish Custom YouTube Animation Logo -->
+            <a href="https://youtube.com/@droid-healthcare" target="_blank" class="yt-btn group relative flex items-center gap-4 px-8 py-3 rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 hover:bg-white/10 hover:border-red-500/30">
+                <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">WATCH THE FEED ON</span>
+                
+                <div class="yt-stylish-logo">
+                    <div class="yt-visual">
+                        <div class="yt-backdrop"></div>
+                        <div class="yt-icon-inner"></div>
+                    </div>
+                    <span class="yt-text">YouTube</span>
+                </div>
+                
+                <div class="w-6 h-6 flex items-center justify-center rounded-full bg-white/5 group-hover:bg-red-500/20 group-hover:translate-x-1 transition-all">
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400 group-hover:text-red-500"></i>
+                </div>
             </a>
         </div>
         
-        <div class="grid grid-cols-2 gap-4 md:gap-8 px-4">
-            <div class="tech-card p-1 md:p-2 rounded-lg md:rounded-2xl">
+        <div class="grid grid-cols-2 gap-3 md:gap-8 px-4">
+            <div class="tech-card p-1.5 md:p-3 rounded-lg md:rounded-3xl">
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/d1w7jeQ3u20" allowfullscreen></iframe></div>
             </div>
-            <div class="tech-card p-1 md:p-2 rounded-lg md:rounded-2xl">
+            <div class="tech-card p-1.5 md:p-3 rounded-lg md:rounded-3xl">
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/gfkynk71DPo" allowfullscreen></iframe></div>
             </div>
-            <div class="tech-card p-1 md:p-2 rounded-lg md:rounded-2xl">
+            <div class="tech-card p-1.5 md:p-3 rounded-lg md:rounded-3xl">
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/k_9yiU4FsNQ" allowfullscreen></iframe></div>
             </div>
-            <div class="tech-card p-1 md:p-2 rounded-lg md:rounded-2xl">
+            <div class="tech-card p-1.5 md:p-3 rounded-lg md:rounded-3xl">
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/sFsquRp9fwg" allowfullscreen></iframe></div>
             </div>
-            <div class="tech-card p-1 md:p-2 rounded-lg md:rounded-2xl">
+            <div class="tech-card p-1.5 md:p-3 rounded-lg md:rounded-3xl">
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/ZZTZYLzW4yE" allowfullscreen></iframe></div>
             </div>
-            <div class="tech-card p-1 md:p-2 rounded-lg md:rounded-2xl">
+            <div class="tech-card p-1.5 md:p-3 rounded-lg md:rounded-3xl">
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/NB-wfiIPP-0" allowfullscreen></iframe></div>
             </div>
-            <div class="tech-card p-1 md:p-2 rounded-lg md:rounded-2xl">
+            <div class="tech-card p-1.5 md:p-3 rounded-lg md:rounded-3xl">
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/_vOTX6IRDX8" allowfullscreen></iframe></div>
             </div>
-            <div class="tech-card p-1 md:p-2 rounded-lg md:rounded-2xl">
+            <div class="tech-card p-1.5 md:p-3 rounded-lg md:rounded-3xl">
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/e06Urc_mj1A" allowfullscreen></iframe></div>
             </div>
-            <div class="tech-card p-1 md:p-2 rounded-lg md:rounded-2xl">
+            <div class="tech-card p-1.5 md:p-3 rounded-lg md:rounded-3xl">
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/3Jrh4p2vsjQ" allowfullscreen></iframe></div>
             </div>
-            <div class="tech-card p-1 md:p-2 rounded-lg md:rounded-2xl">
+            <div class="tech-card p-1.5 md:p-3 rounded-lg md:rounded-3xl">
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/42y8fdtWWGY" allowfullscreen></iframe></div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div>
-                <h2 class="text-xs font-bold text-blue-500 uppercase tracking-[0.4em] mb-4">What I Do</h2>
-                <h3 class="text-4xl md:text-5xl font-bold tracking-tight uppercase">Specialized Services.</h3>
-            </div>
+    <!-- Specialized Services section -->
+    <section id="services" class="pt-8 pb-12 px-6 max-w-4xl mx-auto">
+        <div class="mb-10 text-center">
+            <h2 class="text-[10px] font-bold text-blue-500 uppercase tracking-[0.4em] mb-2">Technical Expertise</h2>
+            <h3 class="text-3xl md:text-4xl font-bold tracking-tight uppercase">Specialized Services.</h3>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="tech-card p-10 rounded-3xl">
-                <i data-lucide="zap" class="text-blue-500 w-10 h-10 mb-8"></i>
-                <h4 class="text-2xl font-bold mb-4">Remote Unbrick</h4>
-                <p class="text-gray-400 font-light leading-relaxed">Fixing hard-bricks and software bootloops via remote access. Fast and secure.</p>
-            </div>
-            <div class="tech-card p-10 rounded-3xl">
-                <i data-lucide="code" class="text-blue-500 w-10 h-10 mb-8"></i>
-                <h4 class="text-2xl font-bold mb-4">ROM Development</h4>
-                <p class="text-gray-400 font-light leading-relaxed">Custom AOSP builds and Kernel optimizations tailored for performance and privacy.</p>
-            </div>
-            <div class="tech-card p-10 rounded-3xl">
-                <i data-lucide="unlock" class="text-blue-500 w-10 h-10 mb-8"></i>
-                <h4 class="text-2xl font-bold mb-4">Bootloader Services</h4>
-                <p class="text-gray-400 font-light leading-relaxed">Safe and professional bootloader unlocking and FRP bypass for international clients.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="aosp" class="py-32 bg-white/5 border-y border-white/5 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-            <div>
-                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-8 leading-tight uppercase">Sharing the <br/> Code.</h2>
-                <p class="text-gray-400 text-lg mb-10 leading-relaxed">Explore my digital ecosystem through YouTube tutorials, Telegram communities, and my official website.</p>
-            </div>
-            
-            <div class="grid gap-6">
-                <div class="relative group cursor-pointer" onclick="window.open('https://youtube.com/@droid-healthcare')">
-                    <div class="absolute inset-0 bg-red-600/10 blur-3xl rounded-full scale-75 group-hover:scale-100 transition duration-1000"></div>
-                    <div class="relative tech-card rounded-3xl p-8 aspect-video flex flex-col justify-center items-center overflow-hidden">
-                        <div class="relative w-16 h-16 mb-6 flex items-center justify-center">
-                            <div class="yt-pulse w-full h-full"></div>
-                            <div class="yt-pulse w-full h-full" style="animation-delay: 0.75s"></div>
-                            <div class="relative z-10 w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center glow transition-transform duration-500 group-hover:scale-110">
-                                <i data-lucide="play" class="fill-white text-white w-6 h-6 ml-1"></i>
-                            </div>
-                        </div>
-                        <p class="font-bold uppercase tracking-widest text-xs group-hover:text-red-400 transition-colors">Explore Portfolio</p>
-                    </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+            <div class="tech-card p-6 rounded-xl flex flex-col items-start border-white/5 group">
+                <div class="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4 overflow-hidden">
+                    <i data-lucide="zap" class="text-blue-500 w-4 h-4 animate-pulse-slow"></i>
                 </div>
-
-                <div class="relative group cursor-pointer" onclick="window.open('https://t.me/DHC_Service')">
-                    <div class="absolute inset-0 bg-blue-600/10 blur-3xl rounded-full scale-75 group-hover:scale-100 transition duration-1000"></div>
-                    <div class="relative tech-card rounded-3xl p-8 aspect-video flex flex-col justify-center items-center overflow-hidden">
-                        <div class="relative w-16 h-16 mb-6 flex items-center justify-center">
-                            <div class="tg-pulse w-full h-full"></div>
-                            <div class="tg-pulse w-full h-full" style="animation-delay: 0.75s"></div>
-                            <div class="relative z-10 w-16 h-16 bg-[#229ED9] rounded-2xl flex items-center justify-center glow transition-transform duration-500 group-hover:scale-110">
-                                <i data-lucide="check-circle" class="text-white w-6 h-6"></i>
-                            </div>
-                        </div>
-                        <p class="font-bold uppercase tracking-widest text-xs group-hover:text-blue-400 transition-colors">Verified Customer Reviews</p>
-                        <p class="text-[10px] text-gray-500 mt-2 mono">Visit Telegram Group</p>
-                    </div>
+                <h4 class="text-lg font-bold mb-2 uppercase tracking-tight">REMOTELY WORK</h4>
+                <p class="text-gray-400 text-xs font-light leading-relaxed">Fixing hard-bricks of xiaomi, oneplus, oppo, vivo, tecno, infinix, global & Chinese, root and software bootloops fix, frp reset and other services via remote access. Fast and secure.</p>
+            </div>
+            <div class="tech-card p-6 rounded-xl flex flex-col items-start border-white/5 group">
+                <div class="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4">
+                    <i data-lucide="code" class="text-blue-500 w-4 h-4 animate-float"></i>
                 </div>
-
-                <div class="relative group cursor-pointer" onclick="window.open('https://shakib.my.id')">
-                    <div class="absolute inset-0 bg-white/10 blur-3xl rounded-full scale-75 group-hover:scale-100 transition duration-1000"></div>
-                    <div class="relative tech-card rounded-3xl p-8 aspect-video flex flex-col justify-center items-center overflow-hidden">
-                        <div class="relative w-16 h-16 mb-6 flex items-center justify-center">
-                            <div class="web-pulse w-full h-full"></div>
-                            <div class="web-pulse w-full h-full" style="animation-delay: 0.75s"></div>
-                            <div class="relative z-10 w-16 h-16 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center glow transition-transform duration-500 group-hover:scale-110">
-                                <i data-lucide="globe" class="text-white w-6 h-6"></i>
-                            </div>
-                        </div>
-                        <p class="font-bold uppercase tracking-widest text-xs group-hover:text-blue-400 transition-colors">Official Website</p>
-                        <p class="text-[10px] text-gray-500 mt-2 mono">shakib.my.id</p>
-                    </div>
+                <h4 class="text-lg font-bold mb-2 uppercase tracking-tight">ROM Development</h4>
+                <p class="text-gray-400 text-xs font-light leading-relaxed">Custom AOSP builds and Kernel optimizations tailored for performance and privacy.</p>
+            </div>
+            <div class="tech-card p-6 rounded-xl flex flex-col items-start border-white/5 group">
+                <div class="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4">
+                    <i data-lucide="monitor" class="text-blue-500 w-4 h-4 animate-spin-slow"></i>
                 </div>
+                <h4 class="text-lg font-bold mb-2 uppercase tracking-tight">OS & Productivity</h4>
+                <p class="text-gray-400 text-xs font-light leading-relaxed">Expert in Linux system administration (Ubuntu/Kali) and advanced MS Office automation/workflows.</p>
+            </div>
+            <div class="tech-card p-6 rounded-xl flex flex-col items-start border-white/5 group">
+                <div class="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4">
+                    <i data-lucide="terminal" class="text-blue-500 w-4 h-4 animate-shake"></i>
+                </div>
+                <h4 class="text-lg font-bold mb-2 uppercase tracking-tight">Tech Maintenance</h4>
+                <p class="text-gray-400 text-xs font-light leading-relaxed">System-level debugging, performance patching, and regular security health checks for Android.</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="text-center mb-20">
-            <h2 class="text-xs font-bold text-blue-500 uppercase tracking-[0.4em] mb-4">Direct Communication</h2>
-            <h3 class="text-4xl md:text-5xl font-bold tracking-tight uppercase">Get In Touch</h3>
+    <!-- Contact section -->
+    <section id="contact" class="pt-8 pb-16 px-6 max-w-4xl mx-auto">
+        <div class="mb-10 text-center">
+            <h2 class="text-[10px] font-bold text-blue-500 uppercase tracking-[0.4em] mb-2">Direct Communication</h2>
+            <h3 class="text-3xl md:text-4xl font-bold tracking-tight uppercase">Get In Touch.</h3>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <a href="https://t.me/Shakib_BD" target="_blank" class="tech-card p-8 rounded-3xl group relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all"><i data-lucide="send" class="w-20 h-20 text-[#229ED9]"></i></div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 bg-[#229ED9] rounded-xl flex items-center justify-center mb-6 relative">
-                        <div class="contact-pulse text-[#229ED9]"></div>
-                        <i data-lucide="send" class="w-6 h-6 text-white"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-1">Telegram Support</h4>
-                    <p class="text-gray-500 text-sm mb-4">@Shakib_BD</p>
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#229ED9] group-hover:underline">Contact Me →</span>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            <a href="https://t.me/Shakib_BD" target="_blank" class="tech-card p-4 md:p-6 rounded-xl flex flex-col items-center justify-center gap-3 md:gap-4 border-white/5 group text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-[#229ED9]/10 rounded-lg flex items-center justify-center shrink-0 relative">
+                    <div class="contact-pulse text-[#229ED9]/30"></div>
+                    <i data-lucide="send" class="w-5 h-5 md:w-6 md:h-6 text-[#229ED9]"></i>
+                </div>
+                <div class="w-full">
+                    <h4 class="text-[11px] md:text-sm font-bold uppercase tracking-tight group-hover:text-[#229ED9] transition-colors">Telegram Contact</h4>
+                    <p class="text-gray-500 text-[9px] md:text-[11px]">@Shakib_BD</p>
                 </div>
             </a>
-
-            <a href="https://t.me/Info_Shakib" target="_blank" class="tech-card p-8 rounded-3xl group relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all"><i data-lucide="megaphone" class="w-20 h-20 text-blue-400"></i></div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-6 relative">
-                        <div class="contact-pulse text-blue-400" style="animation-delay: 0.3s"></div>
-                        <i data-lucide="megaphone" class="w-6 h-6 text-white"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-1">Telegram Channel</h4>
-                    <p class="text-gray-500 text-sm mb-4">@Info_Shakib</p>
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-blue-400 group-hover:underline">Main Channel →</span>
+            <a href="https://t.me/DroidHealthCare" target="_blank" class="tech-card p-4 md:p-6 rounded-xl flex flex-col items-center justify-center gap-3 md:gap-4 border-white/5 group text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-[#229ED9]/10 rounded-lg flex items-center justify-center shrink-0 relative">
+                    <div class="contact-pulse text-[#229ED9]/30"></div>
+                    <i data-lucide="send" class="w-5 h-5 md:w-6 md:h-6 text-[#229ED9]"></i>
+                </div>
+                <div class="w-full">
+                    <h4 class="text-[11px] md:text-sm font-bold uppercase tracking-tight group-hover:text-[#229ED9] transition-colors">UBL & Unbrick TG Channel</h4>
+                    <p class="text-gray-500 text-[9px] md:text-[11px]">Join Channel</p>
                 </div>
             </a>
-
-            <a href="https://wa.link/rhql19" target="_blank" class="tech-card p-8 rounded-3xl group relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all"><i data-lucide="message-circle" class="w-20 h-20 text-[#25D366]"></i></div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 bg-[#25D366] rounded-xl flex items-center justify-center mb-6 relative">
-                        <div class="contact-pulse text-[#25D366]" style="animation-delay: 0.5s"></div>
-                        <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-1">WhatsApp</h4>
-                    <p class="text-gray-500 text-sm mb-4">+880 (Secure Link)</p>
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#25D366] group-hover:underline">Instant Chat →</span>
+            <a href="https://wa.link/rhql19" target="_blank" class="tech-card p-4 md:p-6 rounded-xl flex flex-col items-center justify-center gap-3 md:gap-4 border-white/5 group text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-[#25D366]/10 rounded-lg flex items-center justify-center shrink-0">
+                    <i data-lucide="message-circle" class="w-5 h-5 md:w-6 md:h-6 text-[#25D366]"></i>
+                </div>
+                <div class="w-full">
+                    <h4 class="text-[11px] md:text-sm font-bold uppercase tracking-tight group-hover:text-[#25D366] transition-colors">WhatsApp</h4>
+                    <p class="text-gray-500 text-[9px] md:text-[11px]">Instant Service</p>
                 </div>
             </a>
-
-            <a href="https://www.facebook.com/100001589945486/posts/25969519456017698/?substory_in" target="_blank" class="tech-card p-8 rounded-3xl group relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all"><i data-lucide="facebook" class="w-20 h-20 text-[#1877F2]"></i></div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 bg-[#1877F2] rounded-xl flex items-center justify-center mb-6 relative">
-                        <div class="contact-pulse text-[#1877F2]" style="animation-delay: 1s"></div>
-                        <i data-lucide="facebook" class="w-6 h-6 text-white"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-1">Facebook</h4>
-                    <p class="text-gray-500 text-sm mb-4">Official Account</p>
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#1877F2] group-hover:underline">Community →</span>
+            <!-- Twitter / X -->
+            <a href="http://twitter.com/@Info_Shakib" target="_blank" class="tech-card p-4 md:p-6 rounded-xl flex flex-col items-center justify-center gap-3 md:gap-4 border-white/5 group text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-lg flex items-center justify-center shrink-0">
+                    <i data-lucide="twitter" class="w-5 h-5 md:w-6 md:h-6 text-white animate-float"></i>
+                </div>
+                <div class="w-full">
+                    <h4 class="text-[11px] md:text-sm font-bold uppercase tracking-tight group-hover:text-blue-400 transition-colors">Twitter (X)</h4>
+                    <p class="text-gray-500 text-[9px] md:text-[11px]">@Info_Shakib</p>
                 </div>
             </a>
-
-            <a href="https://instagram.com/shakibul.islam.official" target="_blank" class="tech-card p-8 rounded-3xl group relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all"><i data-lucide="instagram" class="w-20 h-20 text-[#E4405F]"></i></div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] rounded-xl flex items-center justify-center mb-6 relative group-hover:rotate-12 transition-transform"><i data-lucide="instagram" class="w-6 h-6 text-white"></i></div>
-                    <h4 class="text-xl font-bold mb-1">Instagram</h4>
-                    <p class="text-gray-500 text-sm mb-4">@shakibul.islam.official</p>
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#E4405F] group-hover:underline">Visual Works →</span>
+            <!-- VK -->
+            <a href="https://m.vk.com/id501400201" target="_blank" class="tech-card p-4 md:p-6 rounded-xl flex flex-col items-center justify-center gap-3 md:gap-4 border-white/5 group text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-[#0077FF]/10 rounded-lg flex items-center justify-center shrink-0">
+                    <i data-lucide="link" class="w-5 h-5 md:w-6 md:h-6 text-[#0077FF] animate-pulse-slow"></i>
+                </div>
+                <div class="w-full">
+                    <h4 class="text-[11px] md:text-sm font-bold uppercase tracking-tight group-hover:text-[#0077FF] transition-colors">VK Contact</h4>
+                    <p class="text-gray-500 text-[9px] md:text-[11px]">id501400201</p>
                 </div>
             </a>
-
-            <a href="mailto:dev@shakib.my.id" class="tech-card p-8 rounded-3xl group relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all"><i data-lucide="mail" class="w-20 h-20 text-blue-500"></i></div>
-                <div class="relative z-10">
-                    <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:translate-y-[-4px] transition-transform"><i data-lucide="mail" class="w-6 h-6 text-white"></i></div>
-                    <h4 class="text-xl font-bold mb-1">Email</h4>
-                    <p class="text-gray-500 text-sm mb-4">dev@shakib.my.id</p>
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-blue-500 group-hover:underline">Inquiry →</span>
+            <a href="https://youtube.com/@droid-healthcare" target="_blank" class="tech-card p-4 md:p-6 rounded-xl flex flex-col items-center justify-center gap-3 md:gap-4 border-white/5 group text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-red-600/10 rounded-lg flex items-center justify-center shrink-0">
+                    <i data-lucide="youtube" class="w-5 h-5 md:w-6 md:h-6 text-red-500"></i>
+                </div>
+                <div class="w-full">
+                    <h4 class="text-[11px] md:text-sm font-bold uppercase tracking-tight group-hover:text-red-500 transition-colors">YouTube</h4>
+                    <p class="text-gray-500 text-[9px] md:text-[11px]">Video Tutorials</p>
+                </div>
+            </a>
+            <a href="https://shakib.my.id" target="_blank" class="tech-card p-4 md:p-6 rounded-xl flex flex-col items-center justify-center gap-3 md:gap-4 border-white/5 group text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-500/10 rounded-lg flex items-center justify-center shrink-0">
+                    <i data-lucide="layout" class="w-5 h-5 md:w-6 md:h-6 text-blue-400"></i>
+                </div>
+                <div class="w-full">
+                    <h4 class="text-[11px] md:text-sm font-bold uppercase tracking-tight group-hover:text-blue-400 transition-colors">Website</h4>
+                    <p class="text-gray-500 text-[9px] md:text-[11px]">shakib.my.id</p>
+                </div>
+            </a>
+            <a href="https://facebook.com/shakib.bd.official" target="_blank" class="tech-card p-4 md:p-6 rounded-xl flex flex-col items-center justify-center gap-3 md:gap-4 border-white/5 group text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-[#1877F2]/10 rounded-lg flex items-center justify-center shrink-0">
+                    <i data-lucide="facebook" class="w-5 h-5 md:w-6 md:h-6 text-[#1877F2]"></i>
+                </div>
+                <div class="w-full">
+                    <h4 class="text-[11px] md:text-sm font-bold uppercase tracking-tight group-hover:text-[#1877F2] transition-colors">Facebook</h4>
+                    <p class="text-gray-500 text-[9px] md:text-[11px]">Personal Profile</p>
+                </div>
+            </a>
+            <a href="mailto:dev@shakib.my.id" class="tech-card p-4 md:p-6 rounded-xl flex flex-col items-center justify-center gap-3 md:gap-4 border-white/5 group text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-white/5 rounded-lg flex items-center justify-center shrink-0">
+                    <i data-lucide="mail" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
+                </div>
+                <div class="w-full">
+                    <h4 class="text-[11px] md:text-sm font-bold uppercase tracking-tight group-hover:text-blue-400 transition-colors">Email</h4>
+                    <p class="text-gray-500 text-[9px] md:text-[11px]">dev@shakib.my.id</p>
+                </div>
+            </a>
+            <a href="https://github.com/Shakib-BD" target="_blank" class="tech-card p-4 md:p-6 rounded-xl flex flex-col items-center justify-center gap-3 md:gap-4 border-white/5 group text-center">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
+                    <i data-lucide="github" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
+                </div>
+                <div class="w-full">
+                    <h4 class="text-[11px] md:text-sm font-bold uppercase tracking-tight group-hover:text-blue-400 transition-colors">GitHub</h4>
+                    <p class="text-gray-500 text-[9px] md:text-[11px]">Source Projects</p>
                 </div>
             </a>
         </div>
     </section>
 
-    <footer class="py-24 px-6 text-center border-t border-white/5">
-        <div class="pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-600">
+    <footer class="py-12 px-6 text-center border-t border-white/5">
+        <div class="pt-4 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-600">
             <p>© 2026 Droid Healthcare — Shakib</p>
             <div class="flex gap-8">
                 <a href="https://youtube.com/@droid-healthcare" class="hover:text-white transition">YouTube</a>
