@@ -16,6 +16,7 @@
             --accent: #3b82f6;
             --android-green: #3DDC84;
             --glass: rgba(255, 255, 255, 0.03);
+            --youtube: #FF0000;
         }
 
         body {
@@ -185,6 +186,36 @@
             display: flex;
             opacity: 1;
         }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr)); 
+            gap: 0.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .contact-grid {
+                gap: 1rem;
+            }
+        }
+
+        /* Small YouTube button styles */
+        .youtube-btn-small {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .youtube-btn-small:hover {
+            background: rgba(255, 0, 0, 0.08);
+            border-color: rgba(255, 0, 0, 0.3);
+            transform: translateX(-4px);
+        }
+        .yt-icon-anim {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .youtube-btn-small:hover .yt-icon-anim {
+            transform: scale(1.15) rotate(-5deg);
+        }
     </style>
 </head>
 <body class="selection:bg-blue-500 selection:text-white">
@@ -346,6 +377,23 @@
                 <div class="video-container"><iframe src="https://www.youtube.com/embed/lK3bUVAMwsI" allowfullscreen></iframe></div>
             </div>
         </div>
+
+        <!-- Compact Media Hub Option - Right Aligned -->
+        <div class="w-full flex justify-end mt-8 px-4 stagger-up">
+            <a href="https://youtube.com/@droid-healthcare" target="_blank" class="youtube-btn-small flex items-center gap-3 px-5 py-3 rounded-xl group transition-all">
+                <div class="relative yt-icon-anim flex-shrink-0">
+                    <svg width="22" height="16" viewBox="0 0 24 24" fill="#FF0000" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z" />
+                        <path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="white" />
+                    </svg>
+                </div>
+                <div class="flex flex-col items-start">
+                    <span class="text-[7px] font-black text-[#FF0000] uppercase tracking-widest leading-none mb-0.5">Media Hub</span>
+                    <span class="text-xs font-bold uppercase tracking-tight text-white/70 group-hover:text-white transition-colors">Visit Channel</span>
+                </div>
+                <i data-lucide="external-link" class="w-3 h-3 text-gray-700 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all"></i>
+            </a>
+        </div>
     </section>
 
     <section id="services" class="pt-8 pb-6 px-4 md:px-6 max-w-6xl mx-auto">
@@ -358,38 +406,38 @@
         </div>
         
         <div class="grid grid-cols-2 gap-3 md:gap-6">
-            <div class="tech-card p-4 md:p-8 rounded-xl border-white/5">
-                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3 md:mb-4">
+            <div class="tech-card p-4 md:p-8 rounded-xl border-white/5 flex flex-col items-center text-center">
+                <div class="flex flex-col items-center gap-2 md:gap-4 mb-3 md:mb-4">
                     <i data-lucide="zap" class="text-blue-500 w-5 h-5 md:w-7 md:h-7"></i>
-                    <h4 class="text-xs md:text-xl font-bold uppercase tracking-tight leading-none">REMOTELY WORK</h4>
+                    <h4 class="text-xs md:text-xl font-bold uppercase tracking-tight leading-none text-white">REMOTELY WORK</h4>
                 </div>
-                <p class="text-gray-400 text-[10px] md:text-sm font-light leading-snug md:leading-relaxed">Fixing hard-bricks of xiaomi, oneplus, oppo, vivo, tecno, infinix, global & Chinese, root and software bootloops fix, frp reset and other services via remote access. Fast and secure.</p>
+                <p class="text-white text-[10px] md:text-sm font-light leading-snug md:leading-relaxed">Fixing hard-bricks of xiaomi, oneplus, oppo, vivo, tecno, infinix, global & Chinese, root and software bootloops fix, frp reset and other services via remote access. Fast and secure.</p>
             </div>
-            <div class="tech-card p-4 md:p-8 rounded-xl border-white/5">
-                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3 md:mb-4">
+            <div class="tech-card p-4 md:p-8 rounded-xl border-white/5 flex flex-col items-center text-center">
+                <div class="flex flex-col items-center gap-2 md:gap-4 mb-3 md:mb-4">
                     <i data-lucide="code" class="text-blue-500 w-5 h-5 md:w-7 md:h-7"></i>
-                    <h4 class="text-xs md:text-xl font-bold uppercase tracking-tight leading-none">ROM Development</h4>
+                    <h4 class="text-xs md:text-xl font-bold uppercase tracking-tight leading-none text-white">ROM Development</h4>
                 </div>
-                <p class="text-gray-400 text-[10px] md:text-sm font-light leading-snug md:leading-relaxed">Custom AOSP builds and Kernel optimizations tailored for performance and privacy.</p>
+                <p class="text-white text-[10px] md:text-sm font-light leading-snug md:leading-relaxed">Custom AOSP builds and Kernel optimizations tailored for performance and privacy.</p>
             </div>
-            <div class="tech-card p-4 md:p-8 rounded-xl border-white/5">
-                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3 md:mb-4">
+            <div class="tech-card p-4 md:p-8 rounded-xl border-white/5 flex flex-col items-center text-center">
+                <div class="flex flex-col items-center gap-2 md:gap-4 mb-3 md:mb-4">
                     <i data-lucide="terminal" class="text-blue-500 w-5 h-5 md:w-7 md:h-7"></i>
-                    <h4 class="text-xs md:text-xl font-bold uppercase tracking-tight leading-none">OS & Productivity</h4>
+                    <h4 class="text-xs md:text-xl font-bold uppercase tracking-tight leading-none text-white">OS & Productivity</h4>
                 </div>
-                <p class="text-gray-400 text-[10px] md:text-sm font-light leading-snug md:relaxed">Expert in Linux system administration (Ubuntu/Kali) and advanced MS Office automation/workflows.</p>
+                <p class="text-white text-[10px] md:text-sm font-light leading-snug md:relaxed">Expert in Linux system administration (Ubuntu/Kali) and advanced MS Office automation/workflows.</p>
             </div>
-            <div class="tech-card p-4 md:p-8 rounded-xl border-white/5">
-                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3 md:mb-4">
+            <div class="tech-card p-4 md:p-8 rounded-xl border-white/5 flex flex-col items-center text-center">
+                <div class="flex flex-col items-center gap-2 md:gap-4 mb-3 md:mb-4">
                     <i data-lucide="shield-check" class="text-blue-500 w-5 h-5 md:w-7 md:h-7"></i>
-                    <h4 class="text-xs md:text-xl font-bold uppercase tracking-tight leading-none">Tech Maintenance</h4>
+                    <h4 class="text-xs md:text-xl font-bold uppercase tracking-tight leading-none text-white">Tech Maintenance</h4>
                 </div>
-                <p class="text-gray-400 text-[10px] md:text-sm font-light leading-snug md:relaxed">System-level debugging, performance patching, and regular security health checks for Android.</p>
+                <p class="text-white text-[10px] md:text-sm font-light leading-snug md:relaxed">System-level debugging, performance patching, and regular security health checks for Android.</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="pt-4 pb-2 px-6 max-w-6xl mx-auto">
+    <section id="contact" class="pt-4 pb-2 px-3 md:px-6 max-w-6xl mx-auto">
         <div class="flex flex-col items-center mb-6 px-4 text-center">
             <div class="flex items-center gap-3 mb-2">
                 <i data-lucide="message-square" class="w-5 h-5 md:w-6 md:h-6 text-blue-500 animate-bounce"></i>
@@ -397,136 +445,102 @@
             </div>
             <div class="w-12 h-1 bg-blue-500/30 rounded-full"></div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
-            <!-- 1. Telegram Main -->
-            <a href="https://t.me/Shakib_BD" target="_blank" class="tech-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 border-white/5 group text-center">
-                <div class="w-8 h-8 bg-[#229ED9]/10 rounded-lg flex items-center justify-center relative">
+        
+        <div class="contact-grid">
+            <!-- Telegram Shakib -->
+            <a href="https://t.me/Shakib_BD" target="_blank" class="tech-card p-1.5 md:p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-white/5 group text-center overflow-hidden">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-[#229ED9]/10 rounded-lg flex items-center justify-center relative flex-shrink-0">
                     <div class="contact-pulse text-[#229ED9]/30"></div>
-                    <i data-lucide="send" class="w-4 h-4 text-[#229ED9]"></i>
+                    <i data-lucide="send" class="w-3 h-3 md:w-4 md:h-4 text-[#229ED9]"></i>
                 </div>
-                <h4 class="text-[9px] md:text-[10px] font-bold uppercase group-hover:text-[#229ED9] transition-colors">Telegram</h4>
+                <h4 class="text-[6px] md:text-[9px] font-bold uppercase group-hover:text-[#229ED9] transition-colors leading-none truncate w-full">Telegram</h4>
+                <p class="text-[5px] md:text-[8px] text-gray-500 truncate w-full font-medium">@Shakib_BD</p>
             </a>
-            <!-- 2. UBL & Unbrick Channel -->
-            <a href="https://t.me/DroidHealthCare" target="_blank" class="tech-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 border-white/5 group text-center">
-                <div class="w-8 h-8 bg-[#229ED9]/10 rounded-lg flex items-center justify-center">
-                    <i data-lucide="send" class="w-4 h-4 text-[#229ED9]"></i>
+
+            <!-- Telegram Channel -->
+            <a href="https://t.me/DroidHealthCare" target="_blank" class="tech-card p-1.5 md:p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-white/5 group text-center overflow-hidden">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-[#229ED9]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="send" class="w-3 h-3 md:w-4 md:h-4 text-[#229ED9]"></i>
                 </div>
-                <h4 class="text-[9px] md:text-[10px] font-bold uppercase group-hover:text-[#229ED9] transition-colors">UBL & Unbrick</h4>
+                <h4 class="text-[6px] md:text-[9px] font-bold uppercase group-hover:text-[#229ED9] transition-colors leading-none truncate w-full">UBL & Fix</h4>
+                <p class="text-[5px] md:text-[8px] text-gray-500 truncate w-full font-medium">@DroidHealthCare</p>
             </a>
-            <!-- 3. WhatsApp -->
-            <a href="https://wa.link/rhql19" target="_blank" class="tech-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 border-white/5 group text-center">
-                <div class="w-8 h-8 bg-[#25D366]/10 rounded-lg flex items-center justify-center">
-                    <i data-lucide="message-circle" class="w-4 h-4 text-[#25D366]"></i>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.link/rhql19" target="_blank" class="tech-card p-1.5 md:p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-white/5 group text-center overflow-hidden">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-[#25D366]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="message-circle" class="w-3 h-3 md:w-4 md:h-4 text-[#25D366]"></i>
                 </div>
-                <h4 class="text-[9px] md:text-[10px] font-bold uppercase group-hover:text-[#25D366] transition-colors">WhatsApp</h4>
+                <h4 class="text-[6px] md:text-[9px] font-bold uppercase group-hover:text-[#25D366] transition-colors leading-none truncate w-full">WhatsApp</h4>
+                <p class="text-[5px] md:text-[8px] text-gray-500 truncate w-full font-medium">+8801...</p>
             </a>
-            <!-- 4. GitHub -->
-            <a href="https://github.com/Shakib-BD" target="_blank" class="tech-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 border-white/5 group text-center">
-                <div class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
-                    <i data-lucide="github" class="w-4 h-4 text-white"></i>
+
+            <!-- GitHub -->
+            <a href="https://github.com/Shakib-BD" target="_blank" class="tech-card p-1.5 md:p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-white/5 group text-center overflow-hidden">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="github" class="w-3 h-3 md:w-4 md:h-4 text-white"></i>
                 </div>
-                <h4 class="text-[9px] md:text-[10px] font-bold uppercase group-hover:text-blue-400 transition-colors">GitHub</h4>
+                <h4 class="text-[6px] md:text-[9px] font-bold uppercase group-hover:text-blue-400 transition-colors leading-none truncate w-full">GitHub</h4>
+                <p class="text-[5px] md:text-[8px] text-gray-500 truncate w-full font-medium">Shakib-BD</p>
             </a>
-            <!-- 5. Facebook -->
-            <a href="https://www.facebook.com/Shakib.4K" target="_blank" class="tech-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 border-white/5 group text-center">
-                <div class="w-8 h-8 bg-[#1877F2]/10 rounded-lg flex items-center justify-center">
-                    <i data-lucide="facebook" class="w-4 h-4 text-[#1877F2]"></i>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/Shakib.4K" target="_blank" class="tech-card p-1.5 md:p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-white/5 group text-center overflow-hidden">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-[#1877F2]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="facebook" class="w-3 h-3 md:w-4 md:h-4 text-[#1877F2]"></i>
                 </div>
-                <h4 class="text-[9px] md:text-[10px] font-bold uppercase group-hover:text-[#1877F2] transition-colors">Facebook</h4>
+                <h4 class="text-[6px] md:text-[9px] font-bold uppercase group-hover:text-[#1877F2] transition-colors leading-none truncate w-full">Facebook</h4>
+                <p class="text-[5px] md:text-[8px] text-gray-500 truncate w-full font-medium">Shakib.4K</p>
             </a>
-            <!-- 6. YouTube -->
-            <a href="https://youtube.com/@droid-healthcare" target="_blank" class="tech-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 border-white/5 group text-center">
-                <div class="w-8 h-8 bg-[#FF0000]/10 rounded-lg flex items-center justify-center">
-                    <i data-lucide="youtube" class="w-4 h-4 text-[#FF0000]"></i>
+            
+            <!-- YouTube -->
+            <a href="https://youtube.com/@droid-healthcare" target="_blank" class="tech-card p-1.5 md:p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-white/5 group text-center overflow-hidden">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-[#FF0000]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="youtube" class="w-3 h-3 md:w-4 md:h-4 text-[#FF0000]"></i>
                 </div>
-                <h4 class="text-[9px] md:text-[10px] font-bold uppercase group-hover:text-[#FF0000] transition-colors">YouTube</h4>
+                <h4 class="text-[6px] md:text-[9px] font-bold uppercase group-hover:text-[#FF0000] transition-colors leading-none truncate w-full">YouTube</h4>
+                <p class="text-[5px] md:text-[8px] text-gray-500 truncate w-full font-medium">DroidHealth</p>
             </a>
-            <!-- 7. Twitter/X -->
-            <a href="http://twitter.com/@Info_Shakib" target="_blank" class="tech-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 border-white/5 group text-center">
-                <div class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
-                    <i data-lucide="twitter" class="w-4 h-4 text-white"></i>
+
+            <!-- Twitter -->
+            <a href="http://twitter.com/@Info_Shakib" target="_blank" class="tech-card p-1.5 md:p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-white/5 group text-center overflow-hidden">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="twitter" class="w-3 h-3 md:w-4 md:h-4 text-white"></i>
                 </div>
-                <h4 class="text-[9px] md:text-[10px] font-bold uppercase group-hover:text-blue-400 transition-colors">Twitter</h4>
+                <h4 class="text-[6px] md:text-[9px] font-bold uppercase group-hover:text-blue-400 transition-colors leading-none truncate w-full">Twitter</h4>
+                <p class="text-[5px] md:text-[8px] text-gray-500 truncate w-full font-medium">@Info_Shakib</p>
             </a>
-            <!-- 8. VK -->
-            <a href="https://m.vk.com/id501400201" target="_blank" class="tech-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 border-white/5 group text-center">
-                <div class="w-8 h-8 bg-[#4C75A3]/10 rounded-lg flex items-center justify-center">
-                    <i data-lucide="globe-2" class="w-4 h-4 text-[#4C75A3]"></i>
+
+            <!-- VK -->
+            <a href="https://m.vk.com/id501400201" target="_blank" class="tech-card p-1.5 md:p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-white/5 group text-center overflow-hidden">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-[#4C75A3]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="globe-2" class="w-3 h-3 md:w-4 md:h-4 text-[#4C75A3]"></i>
                 </div>
-                <h4 class="text-[9px] md:text-[10px] font-bold uppercase group-hover:text-[#4C75A3] transition-colors">VK</h4>
+                <h4 class="text-[6px] md:text-[9px] font-bold uppercase group-hover:text-[#4C75A3] transition-colors leading-none truncate w-full">VK</h4>
+                <p class="text-[5px] md:text-[8px] text-gray-500 truncate w-full font-medium">id501400201</p>
             </a>
-            <!-- 9. Website -->
-            <a href="https://shakib.my.id" target="_blank" class="tech-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 border-white/5 group text-center">
-                <div class="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                    <i data-lucide="globe" class="w-4 h-4 text-blue-400"></i>
+
+            <!-- Website -->
+            <a href="https://shakib.my.id" target="_blank" class="tech-card p-1.5 md:p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-white/5 group text-center overflow-hidden">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="globe" class="w-3 h-3 md:w-4 md:h-4 text-blue-400"></i>
                 </div>
-                <h4 class="text-[9px] md:text-[10px] font-bold uppercase group-hover:text-blue-400 transition-colors">Website</h4>
+                <h4 class="text-[6px] md:text-[9px] font-bold uppercase group-hover:text-blue-400 transition-colors leading-none truncate w-full">Website</h4>
+                <p class="text-[5px] md:text-[8px] text-gray-500 truncate w-full font-medium">shakib.my.id</p>
             </a>
-            <!-- 10. Email -->
-            <a href="mailto:dev@shakib.my.id" class="tech-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 border-white/5 group text-center">
-                <div class="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center">
-                    <i data-lucide="mail" class="w-4 h-4 text-blue-400"></i>
+
+            <!-- Email -->
+            <a href="mailto:dev@shakib.my.id" class="tech-card p-1.5 md:p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-white/5 group text-center overflow-hidden">
+                <div class="w-6 h-6 md:w-8 md:h-8 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="mail" class="w-3 h-3 md:w-4 md:h-4 text-blue-400"></i>
                 </div>
-                <h4 class="text-[9px] md:text-[10px] font-bold uppercase group-hover:text-blue-400 transition-colors">Email</h4>
+                <h4 class="text-[6px] md:text-[9px] font-bold uppercase group-hover:text-blue-400 transition-colors leading-none truncate w-full">Email</h4>
+                <p class="text-[5px] md:text-[8px] text-gray-500 truncate w-full font-medium">dev@shakib</p>
             </a>
         </div>
     </section>
 
-    <section id="pc-specs" class="pt-4 pb-8 px-6 max-w-6xl mx-auto">
-        <div class="flex flex-col items-center mb-6 px-4 text-center">
-            <div class="flex items-center gap-3 mb-2">
-                <i data-lucide="cpu" class="w-5 h-5 md:w-6 md:h-6 text-blue-500 animate-pulse"></i>
-                <h3 class="text-xl md:text-2xl font-bold tracking-tight uppercase">My PC's Configuration</h3>
-            </div>
-            <div class="w-12 h-1 bg-blue-500/30 rounded-full"></div>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-            <div class="tech-card p-4 md:p-6 rounded-2xl flex flex-col items-center text-center border-white/5">
-                <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3">
-                    <i data-lucide="cpu" class="w-5 h-5 text-blue-400"></i>
-                </div>
-                <h5 class="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Processor</h5>
-                <p class="mono-text text-[11px] md:text-sm font-bold text-white leading-tight">AMD Ryzen™ 5 5600G</p>
-            </div>
-            <div class="tech-card p-4 md:p-6 rounded-2xl flex flex-col items-center text-center border-white/5">
-                <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3">
-                    <i data-lucide="circuit-board" class="w-5 h-5 text-blue-400"></i>
-                </div>
-                <h5 class="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Motherboard</h5>
-                <p class="mono-text text-[11px] md:text-sm font-bold text-white leading-tight">MSI B450M-A Pro Max</p>
-            </div>
-            <div class="tech-card p-4 md:p-6 rounded-2xl flex flex-col items-center text-center border-white/5">
-                <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3">
-                    <i data-lucide="hard-drive" class="w-5 h-5 text-blue-400"></i>
-                </div>
-                <h5 class="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Memory (RAM)</h5>
-                <p class="mono-text text-[11px] md:text-sm font-bold text-white leading-tight">16GB Kimtigo WOLFRINE</p>
-            </div>
-            <div class="tech-card p-4 md:p-6 rounded-2xl flex flex-col items-center text-center border-white/5">
-                <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3">
-                    <i data-lucide="database" class="w-5 h-5 text-blue-400"></i>
-                </div>
-                <h5 class="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Storage</h5>
-                <p class="mono-text text-[11px] md:text-sm font-bold text-white leading-tight">128GB NVMe + 500GB HDD</p>
-            </div>
-            <div class="tech-card p-4 md:p-6 rounded-2xl flex flex-col items-center text-center border-white/5">
-                <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3">
-                    <i data-lucide="monitor" class="w-5 h-5 text-blue-400"></i>
-                </div>
-                <h5 class="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Graphics</h5>
-                <p class="mono-text text-[11px] md:text-sm font-bold text-white leading-tight">Radeon™ Graphics (Built-in)</p>
-            </div>
-            <div class="tech-card p-4 md:p-6 rounded-2xl flex flex-col items-center text-center border-white/5">
-                <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3">
-                    <i data-lucide="zap" class="w-5 h-5 text-blue-400"></i>
-                </div>
-                <h5 class="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Power Supply</h5>
-                <p class="mono-text text-[11px] md:text-sm font-bold text-white leading-tight">Deepcool PF450 450W</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-6 px-6 text-center border-t border-white/5">
+    <footer class="py-10 px-6 text-center border-t border-white/5">
         <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-600">
             <p>Droid Healthcare | Bangladesh — Global Support</p>
             <p>© 2022-2026. All rights reserved.</p>
